@@ -9,11 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.model.*;
-import play.model.*;
-import quiz.model.*;
-import shop.model.*;
-import user.model.*;
+import dao.*;
 
 @WebServlet(urlPatterns = "/register")
 public class FrontController extends HttpServlet {
