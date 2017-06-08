@@ -71,11 +71,18 @@
 			                        	<input type="password" name="form-password" placeholder="패스워드" class="form-password form-control" id="form-password">
 			                        </div>
 			                        <button type="submit" class="btn">로그인</button>
-			                        <button type="button" class="btn" onclick="https://www.naver.com">회원가입</button>
-			                        <button type="button" class="btn">아이디/비밀번호 찾기</button>
-			                        <button type="button" class="btn">고객센터</button>
 			                    </form>
 		                    </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 social-login">
+                        	<div>
+                        		<br>
+	                        	<a href="https://www.naver.com/"><font size="4em" color="white">회원가입&nbsp;&nbsp;&nbsp;</font></a>
+	                        	<a href="#"><font size="4em" color="white">아이디/비밀번호 찾기&nbsp;&nbsp;&nbsp;</font></a>
+	                        	<a href="#"><font size="4em" color="white">고객센터</font></a>
+                        	</div>
                         </div>
                     </div>
                 </div>

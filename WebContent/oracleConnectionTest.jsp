@@ -15,6 +15,7 @@
 		Connection con = pool.getConnection();		
 		
 		if(con != null){
+			System.out.println("연결 성공");
 			out.println("연결 성공");
 		}
 		pool.freeConnection(con);
