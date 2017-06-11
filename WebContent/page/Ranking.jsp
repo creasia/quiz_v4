@@ -53,33 +53,41 @@
         <div class="row col-lg-12">
             <div class="col-lg-12" >
             <div class="col-lg-12" align="center">
-                <h1 class="page-header">정답률 랭킹 </h1>
-               <a href="#">정답률&nbsp;&nbsp;&nbsp;</a><a href="#">싱글&nbsp;&nbsp;&nbsp;</a><a href="#">배틀</a><br><br>
+                <h1 class="page-header">배틀 승률 랭킹 </h1>
+               <a href="#">배틀 승률</a> &nbsp;&nbsp;&nbsp;<a href="#">정답률</a><br><br>
            	<br>
             </div>
-           	
+ <%
+			u_battle One = (u_battle)list.get(0);			
+			u_battle Two = (u_battle)list.get(1);			
+			u_battle Three = (u_battle)list.get(2);			
+%>		          	
           <div class="col-lg-12" >
            	<div class="alert alert-dismissible alert-danger col-lg-3">
 				 
-				  <h4>1위 닉네임</h4>
-				  <p>쉽다</p>		  
+				  <h4>1위 <%=One.getU_nickname()%></h4>
+				  <p><%=One.getU_comment()%></p>		  
 			</div>
            <div class="col-lg-1" ></div>
             <div class="alert alert-dismissible alert-info col-lg-3">
 				  
-				  <h4>1위 닉네임</h4>
-				  <p>쉽다</p>
+				  <h4>2위 <%=Two.getU_nickname()%></h4>
+				  <p><%=Two.getU_comment()%></p>
 			</div>
              <div class="col-lg-1" ></div>
             <div class="alert alert-dismissible alert-success col-lg-3">
 				  
-				  <h4>1위 닉네임</h4>
-				  <p>쉽다</p>
+				  <h4>3위 <%=Three.getU_nickname()%></h4>
+				  <p><%=Three.getU_comment()%></p>
             </div>
             <br><br>
            </div>
         
             	<h2 class="page-header" align="center">내 랭킹</h2>
+<%
+String id="";
+if(id.length()>0){
+%>
             	
             	<table class="table table-striped table-hover ">
 				  <thead>
@@ -88,7 +96,7 @@
 				      <th>닉네임</th>
 				      <th>승리</th>
 				      <th>패배</th>
-				      <th>정답률</th>
+				      <th>승률</th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -101,6 +109,16 @@
 				    </tr>
 				  </tbody>
 				</table>
+<%
+	}else{
+%>		
+<div align="center">
+
+<a href="#">로그인</a>이 필요한 서비스 입니다.
+</div>
+<%		
+}
+%>
 				<br><br>
                 <h2 class="page-header" align="center">전체 랭킹</h2>
                 <table class="table table-striped table-hover ">
@@ -110,14 +128,13 @@
 				      <th>닉네임</th>
 				      <th>승리</th>
 				      <th>패배</th>
-				      <th>정답률</th>
+				      <th>승률</th>
 				    </tr>
 				  </thead>
 				  <tbody>
-<%
+ <%
 	for(int i=0; i<list.size();i++){
-			u_battle dto = (u_battle)list.get(i);
-			
+			u_battle dto = (u_battle)list.get(i);	
 %>			
 		<tr <%if(i%2==0){%>class="info"<%} %>>
 			<td><%=i+1%></td>
