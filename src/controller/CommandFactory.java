@@ -9,15 +9,17 @@ public class CommandFactory {
 	}
 	
 	public Command createCommand(String cmd){
-		if (cmd.equals("REGFORM")) {
-			return new RegFormCommand();
+		if (cmd.equals("QUIZ_GET")) {
+			return new QuizgetCommand();
+		}else if (cmd.equals("QUIZ_CHECK")) {
+			return new QuziCheckCommand();
 		}
-		else if (cmd.equals("CONFIRM")) {
-			return new ConfirmCommand();
+		else if (cmd.equals("QUIZ_PUT")) {
+		}else if(cmd.equals("QUIZ_RESULT")){
 		}
 		else{
-			return null;
 		}
+		return null;
 	}
 	
 }

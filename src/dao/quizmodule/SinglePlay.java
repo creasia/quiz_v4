@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.Command;
-import controller.CommandFactory_hy;
+import controller.CommandFactory;
 import dto.Quiz;
 
 @WebServlet(urlPatterns = "/quiz")
@@ -30,7 +30,7 @@ public class SinglePlay extends HttpServlet {
 		String answer = (String) req.getAttribute("answer");
 		System.out.println("answer :" +answer);
 		}
-		CommandFactory_hy factory = CommandFactory_hy.newInstance();
+		CommandFactory factory = CommandFactory.newInstance();
 		Command command = factory.createCommand(cmd);
 	
 		String url = (String) command.processCommand(req, resp);
