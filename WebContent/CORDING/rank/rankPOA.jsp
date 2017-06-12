@@ -7,9 +7,9 @@
 <jsp:useBean id="dao" class="dao.exam"></jsp:useBean>
 <meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../bootstrap332/css/bootstrap.min.css">
-<script src="../bootstrap332/js/jquery-3.2.1.min.js"></script>
-<script src="../bootstrap332/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../../bootstrap332/css/bootstrap.min.css">
+<script src="../../bootstrap332/js/jquery-3.2.1.min.js"></script>
+<script src="../../bootstrap332/js/bootstrap.min.js"></script>
 <style>body{margin-top: 40px}</style>
 <%
 	request.setCharacterEncoding("euc-kr");

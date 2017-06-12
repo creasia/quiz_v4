@@ -8,10 +8,6 @@ import java.util.List;
 
 import dto.u_battle;
 
-
-
-
-
 public class exam {
 	private Connection con;
 	private PreparedStatement pstmt;
