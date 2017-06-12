@@ -19,7 +19,7 @@
 
 	
 	if(u_pw.equals(userinfo.getU_pw())){
-		session.setAttribute("u_id", "u_id");
+		session.setAttribute("u_id", u_id);
 		response.sendRedirect("../../main.html");
 	}
 	else{
