@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +19,14 @@
 			}
 	);
 </script>
+<%
+	request.setCharacterEncoding("euc-kr");
+	response.setCharacterEncoding("euc-kr");
+	String id ="";
+	if(session.getAttribute("u_id")!=null){
+	id = (String)session.getAttribute("u_id");
+	}
+%>
 <title>Main</title>
 </head>
 <body>
@@ -38,8 +47,9 @@
                 	width="100px" height="50px">
                 	
                 </li>
+                	<%if(id.length()==0){%>
                     <li>
-                        <a href="#">로그인</a>
+                        <a href="CORDING/login/login.html">로그인</a>
                     </li>
                     <li>
                         <a href="#">회원가입</a>
@@ -47,8 +57,21 @@
                     <li>
                     	<a href="idpw.html">아이디/비밀번호 찾기</a>     
                     </li>
-                </ul>
-            </div>
+                    <% }else{%>
+                    <li>
+                        <a href="CORDING/login/logout.html">로그아웃</a>
+                    </li>
+                    <li>
+                        <a href="#">마이페이지</a>
+                    </li>
+                    <%} %>
+                    <li>
+                    	 <%if(id.length()>0){%>
+           			     <font size="4pt" color="white"><%=id %>님 환영합니다.</font>
+              			  <%} %>
+                    </li>
+                </ul>             
+            </div>            
         </div>
     </nav>
 

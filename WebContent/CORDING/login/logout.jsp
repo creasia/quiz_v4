@@ -10,21 +10,9 @@
 	<jsp:useBean id="dao" class="dao.loginmodule.Login"/>
 	<jsp:useBean id="dto" class="dto.UserInfo"/>
 	<jsp:setProperty name="dto" property="*"/>
+	
 
 <%
-	String u_id = request.getParameter("form-username");
-	String u_pw = request.getParameter("form-password");
-	
-	UserInfo userinfo = dao.getUser(u_id);
-
-	
-	if(u_pw.equals(userinfo.getU_pw())){
-		session.setAttribute("u_id", u_id);
-		response.sendRedirect("../../main.jsp");
-	}
-	else{
-		session.setAttribute("u_id", "err");
-		response.sendRedirect("login_err.html");		
-	}
-
+		session.invalidate(); 
+		response.sendRedirect("../../main.jsp");		
 %>

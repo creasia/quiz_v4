@@ -28,19 +28,17 @@ public class rank {
 	//List.jsp
 	public List getBoardList(){
 		ArrayList list = new ArrayList();
-
 		sql = "select u_battle.u_id, userinfo.u_nickname, userinfo.u_comment, u_battle.ub_win, u_battle.ub_lose, userinfo.u_point from u_battle  inner join userinfo on u_battle.u_id = userinfo.u_id where u_battle.ub_win+u_battle.ub_lose>200 order by u_battle.ub_win/(u_battle.ub_win+u_battle.ub_lose) desc";
-
 		try{
 
 			con = pool.getConnection();
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 				
-			while(rs.next()){
-				
+			while(rs.next()){		
 				u_battle u_battle = new u_battle();
 				u_battle.setU_id(rs.getString("u_id"));
+				u_battle.setU_comment(rs.getString("u_comment"));	
 				u_battle.setU_win(rs.getInt("ub_win"));
 				u_battle.setU_lose(rs.getInt("ub_lose"));
 				u_battle.setU_nickname(rs.getString("u_nickname"));
@@ -56,5 +54,30 @@ public class rank {
 		}
 		return list;
 	}
-	
+	public int BattleMyRank(String id){
+		
+		int rank=0;
+		int myrank=0;
+		sql = "select u_battle.u_id, userinfo.u_nickname, userinfo.u_comment, u_battle.ub_win, u_battle.ub_lose, userinfo.u_point from u_battle  inner join userinfo on u_battle.u_id = userinfo.u_id where u_battle.ub_win+u_battle.ub_lose>200 order by u_battle.ub_win/(u_battle.ub_win+u_battle.ub_lose) desc";
+		try{
+			
+			con = pool.getConnection();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+				
+			while(rs.next()){	
+				rank++;
+				if(id.equals(rs.getString("u_id"))){
+					myrank=rank;
+				}
+			}
+		}
+		catch(Exception err){
+			System.out.println("MyRank() 에서 오류 : "+err);
+		}
+		finally{
+			pool.freeConnection(con,pstmt, rs);
+		}
+		return myrank;
+	}
 }
