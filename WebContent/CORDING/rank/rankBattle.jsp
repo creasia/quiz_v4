@@ -11,6 +11,10 @@
 <script src="../../bootstrap332/js/jquery-3.2.1.min.js"></script>
 <script src="../../bootstrap332/js/bootstrap.min.js"></script>
 <style>body{margin-top: 40px}</style>
+<!-- 
+	나중에 수정해야할 사항
+	랭킹 판수 200판 이상인 사람만 불러와서 출력하는데 내 랭킹이 200판이 안될때 등수 처리
+ -->
 <%
 	request.setCharacterEncoding("euc-kr");
 	response.setCharacterEncoding("euc-kr");
@@ -61,7 +65,7 @@
             <div class="col-lg-12" >
             <div class="col-lg-12" align="center">
                 <h1 class="page-header">배틀 승률 랭킹 </h1>
-               <a href="#">배틀 승률</a> &nbsp;&nbsp;&nbsp;<a href="#">정답률</a><br><br>
+               <a href="rankBattle.jsp">배틀 승률</a> &nbsp;&nbsp;&nbsp;<a href="rankPOA.jsp">정답률</a><br><br>
            	<br>
             </div>
  <%
@@ -94,6 +98,12 @@
 <%
 
 if(id.length()>0){
+	if(myrank==-1){%>
+	<div align="center">
+	<h3>200판을 채우지 못했습니다 :(</h3>
+	</div>	
+	<%}
+	else{
 	u_battle my = (u_battle)list.get(myrank);
 %>
             	
@@ -117,8 +127,8 @@ if(id.length()>0){
 				    </tr>
 				  </tbody>
 				</table>
-<%
-	}else{
+<%	}
+}else{
 %>		
 <div align="center">
 

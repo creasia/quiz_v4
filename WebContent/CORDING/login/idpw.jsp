@@ -8,8 +8,13 @@
 <link rel="stylesheet" href="../../bootstrap332/css/bootstrap.min.css">
 <script src="../../bootstrap332/js/jquery-3.2.1.min.js"></script>
 <script src="../../bootstrap332/js/bootstrap.min.js"></script>
+<jsp:useBean id="dao" class="dao.loginmodule.idpw"/>
 <style>body{margin-top: 60px}</style>
-
+<%
+	request.setCharacterEncoding("euc-kr");
+	response.setCharacterEncoding("euc-kr");
+	String [] u_find = dao.getBoardList();
+%>
 <title>Insert title here</title>
 </head>
 <body>
@@ -94,11 +99,10 @@
      		 <label for="inputQuiz" class="col-lg-2 control-label">퀴즈선택</label>
      		 <div class="col-lg-10">
     		 <select class="form-control" id="select">
-	          <option>나의 고향은?</option>
-	          <option>2</option>
-	          <option>3</option>
-	          <option>4</option>
-	          <option>5</option>
+    		 <%for(int i=0; i<u_find.length ;i++){ %>
+    		 	
+	          <option><%=u_find[i]%></option>
+	          <%} %>
 	         </select>
 	        </div>
 	      	</div>

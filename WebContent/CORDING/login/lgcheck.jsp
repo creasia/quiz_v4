@@ -23,7 +23,6 @@
 		response.sendRedirect("../../main.jsp");
 	}
 	else{
-		session.setAttribute("u_id", "err");
 		response.sendRedirect("login_err.html");		
 	}
 
