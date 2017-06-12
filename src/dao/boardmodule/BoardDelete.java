@@ -1,5 +1,5 @@
 package dao.boardmodule;
 
-public class board {
+public class BoardDelete {
 
 }
