@@ -26,16 +26,11 @@ public class SinglePlay extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("euc-kr");
 		String cmd = req.getParameter("cmd");
-		if(cmd.equals("QUIZ_CHECK")){
-		String answer = (String) req.getAttribute("answer");
-		System.out.println("answer :" +answer);
-		}
 		CommandFactory factory = CommandFactory.newInstance();
 		Command command = factory.createCommand(cmd);
 	
 		String url = (String) command.processCommand(req, resp);
 		Quiz q = (Quiz) req.getAttribute("quiz");
-		
 		
 		req.setAttribute("quiz", q);
 		RequestDispatcher dis = req.getRequestDispatcher(url);
