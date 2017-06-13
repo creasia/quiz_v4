@@ -73,14 +73,24 @@
                 <a href="rankBattle.jsp">배틀 승률</a> &nbsp;&nbsp;&nbsp;<a href="rankPOA.jsp">정답률</a><br><br>
            	<br>
            	<form role="form" action="rankPOA.jsp" method="post">
-           		유형
-	           	<select class="form-control" name="up_type" id="up_type">
-	  						<option>A</option>
-	  						<option>B</option>
-	  						<option>C</option>
-				</select>
-				 <button type="submit">찾기</button>
+           	<div class="col-lg-12" align="center">
+           		<div class="col-lg-3"></div>
+	           	<div class="col-md-2">
+	           		유형
+	           	</div>	
+	           	<div class="col-md-2">
+		           	<select class="form-control" name="up_type" id="up_type">
+		  						<option>A</option>
+		  						<option>B</option>
+		  						<option>C</option>
+					</select>
+				</div>
+				<div class="col-md-2">
+					 <button type="submit">찾기</button>
+				</div>	
+			</div>	 
            	</form>
+           	<br><br><br><br>
             </div>
  <%
 			u_single One = (u_single)list.get(0);			
@@ -106,8 +116,9 @@
 				  <p><%=Three.getU_comment()%></p>
             </div>
             <br><br>
+            <br><br><br><br>
            </div>
-        
+        	
             	<h2 class="page-header" align="center">내 랭킹</h2>
 <%
 
@@ -149,7 +160,7 @@
 %>		
 <div align="center">
 
-<a href="#">로그인</a>이 필요한 서비스 입니다.
+<a href="../login/login.html">로그인</a>이 필요한 서비스 입니다.
 </div>
 <%		
 }

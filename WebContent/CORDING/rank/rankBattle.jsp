@@ -11,10 +11,7 @@
 <script src="../../bootstrap332/js/jquery-3.2.1.min.js"></script>
 <script src="../../bootstrap332/js/bootstrap.min.js"></script>
 <style>body{margin-top: 40px}</style>
-<!-- 
-	나중에 수정해야할 사항
-	랭킹 판수 200판 이상인 사람만 불러와서 출력하는데 내 랭킹이 200판이 안될때 등수 처리
- -->
+
 <%
 	request.setCharacterEncoding("euc-kr");
 	response.setCharacterEncoding("euc-kr");
@@ -132,7 +129,7 @@ if(id.length()>0){
 %>		
 <div align="center">
 
-<a href="#">로그인</a>이 필요한 서비스 입니다.
+<a href="../login/login.html">로그인</a>이 필요한 서비스 입니다.
 </div>
 <%		
 }

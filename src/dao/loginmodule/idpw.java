@@ -55,4 +55,48 @@ public class idpw {
 		return arr;
 	}
 	
+	public String searchId(String name, String email){
+		String id="";
+		sql = "select u_id from userinfo where u_name = '"+name+"' and u_email='"+email+"'";
+		try{
+			int i=0;
+			con = pool.getConnection();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+				
+			while(rs.next()){
+				id = rs.getString("u_id");				
+			}
+		}
+		catch(Exception err){
+			System.out.println("searchId 에서 오류 : "+err);
+		}
+		finally{
+			pool.freeConnection(con,pstmt, rs);
+		}
+		return id;
+	}
+	
+	public String searchPw(String id, String email, String U_QUESTION, String U_ANSWER){
+		String pw="";
+		sql = "select u_pw from userinfo where u_id = '"+id+"' and u_email='"+email+"' and "+
+		"u_question = '"+U_QUESTION+"' and u_answer='"+U_ANSWER+"'";
+		try{
+			int i=0;
+			con = pool.getConnection();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+				
+			while(rs.next()){
+				pw = rs.getString("u_pw");				
+			}
+		}
+		catch(Exception err){
+			System.out.println("searchPw 에서 오류 : "+err);
+		}
+		finally{
+			pool.freeConnection(con,pstmt, rs);
+		}
+		return pw;
+	}
 }
