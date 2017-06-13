@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,41 +19,54 @@
 			}
 	);
 </script>
+<%
+	request.setCharacterEncoding("euc-kr");
+	response.setCharacterEncoding("euc-kr");
+	String u_id ="";
+	if(session.getAttribute("u_id")!=null){
+		u_id = (String)session.getAttribute("u_id");
+	}
+%>
 <title>Main</title>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container" >
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-             
-            </div>    
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
-                <ul class="nav navbar-nav"  >
-                <li>
-                <img src="https://cdn0.iconfinder.com/data/icons/chinese-new-year-4/64/treasure-chinese-new-year-heritage-diamond-128.png"
-                	width="100px" height="50px">
-                	
-                </li>
-                    <li>
-                        <a href="#">로그인</a>
-                    </li>
-                    <li>
-                        <a href="#">회원가입</a>
-                    </li>
-                    <li>
-                    	<a href="idpw.html">아이디/비밀번호 찾기</a>     
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<!--  -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    	<!-- 이미지 깨짐
+    	<a class="navbar-brand" href="#">
+    		<img alt="Brand" src="/images/quiz.jpg">
+    	</a>
+    	 -->
+    	<a class="navbar-brand" href="#"><font color="red">Guilty Pleasure</font></a>
+    </div>
+    <div>
+    <!-- 좌측정렬 네비 바
+      <ul class="nav navbar-nav">
+        <li><a href="#">홈</a></li>
+        <li><a href="#">메뉴1</a></li>
+        <li><a href="#">메뉴2</a></li> 
+        <li><a href="#">메뉴3</a></li> 
+      </ul>
+    -->
+    <!-- 우측 정렬 네비 바 -->
+      <ul class="nav navbar-nav navbar-right">
+      	<%if(u_id.length()==0){%>
+        	<li><a href="CORDING/login/login.html">로그인</a></li>
+        	<li><a href="CORDING/login/resistration.html">회원가입</a></li>
+        	<li><a href="CORDING/login/idpw.jsp">아이디/비밀번호 찾기</a></li>
+        <%} %>
+        <%if(u_id.length()>0){%>
+        	<li><a><%=u_id%>님 환영합니다.</a></li>
+        	<li><a href="#">마이페이지</a></li>
+        	<li><a href="CORDING/login/logout.html">로그아웃</a></li>
+        <%} %>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-   
 <div class="container">   
         <div class="row">
             <div class="col-lg-12" align="center">

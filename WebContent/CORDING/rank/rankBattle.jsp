@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:useBean id="dao" class="dao.rankmodule.rank"></jsp:useBean>
+<jsp:useBean id="dao" class="dao.rankmodule.rank"/>
 <meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../../bootstrap332/css/bootstrap.min.css">
@@ -13,6 +13,13 @@
 <style>body{margin-top: 40px}</style>
 <%
 	request.setCharacterEncoding("euc-kr");
+	response.setCharacterEncoding("euc-kr");
+	String id ="";
+	int myrank=0;
+	if(session.getAttribute("u_id")!=null){
+	id = (String)session.getAttribute("u_id");
+	myrank=dao.BattleMyRank(id)-1;
+	}
 	List list = dao.getBoardList();
 %>
 <title>Ranking</title>
@@ -85,8 +92,9 @@
         
             	<h2 class="page-header" align="center">내 랭킹</h2>
 <%
-String id="";
+
 if(id.length()>0){
+	u_battle my = (u_battle)list.get(myrank);
 %>
             	
             	<table class="table table-striped table-hover ">
@@ -101,11 +109,11 @@ if(id.length()>0){
 				  </thead>
 				  <tbody>
 				  <tr class="active">
-				      <td>7</td>
-				      <td>아무개</td>
-				      <td>5</td>
-				      <td>5</td>
-				      <td>50%</td>
+				      <td><%=myrank+1%></td>
+				      <td><%=my.getU_nickname() %></td>
+				      <td><%=my.getU_win() %></td>
+				      <td><%=my.getU_lose() %></td>
+				      <td><%=my.getU_win()*100/(my.getU_win()+my.getU_lose())%>%</td>
 				    </tr>
 				  </tbody>
 				</table>
