@@ -11,6 +11,7 @@
 <script src="../../bootstrap332/js/jquery-3.2.1.min.js"></script>
 <script src="../../bootstrap332/js/bootstrap.min.js"></script>
 <style>body{margin-top: 40px}</style>
+
 <%
 	request.setCharacterEncoding("euc-kr");
 	response.setCharacterEncoding("euc-kr");
@@ -61,7 +62,7 @@
             <div class="col-lg-12" >
             <div class="col-lg-12" align="center">
                 <h1 class="page-header">배틀 승률 랭킹 </h1>
-               <a href="#">배틀 승률</a> &nbsp;&nbsp;&nbsp;<a href="#">정답률</a><br><br>
+               <a href="rankBattle.jsp">배틀 승률</a> &nbsp;&nbsp;&nbsp;<a href="rankPOA.jsp">정답률</a><br><br>
            	<br>
             </div>
  <%
@@ -94,6 +95,12 @@
 <%
 
 if(id.length()>0){
+	if(myrank==-1){%>
+	<div align="center">
+	<h3>200판을 채우지 못했습니다 :(</h3>
+	</div>	
+	<%}
+	else{
 	u_battle my = (u_battle)list.get(myrank);
 %>
             	
@@ -117,12 +124,12 @@ if(id.length()>0){
 				    </tr>
 				  </tbody>
 				</table>
-<%
-	}else{
+<%	}
+}else{
 %>		
 <div align="center">
 
-<a href="#">로그인</a>이 필요한 서비스 입니다.
+<a href="../login/login.html">로그인</a>이 필요한 서비스 입니다.
 </div>
 <%		
 }

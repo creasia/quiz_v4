@@ -8,11 +8,17 @@
 <link rel="stylesheet" href="../../bootstrap332/css/bootstrap.min.css">
 <script src="../../bootstrap332/js/jquery-3.2.1.min.js"></script>
 <script src="../../bootstrap332/js/bootstrap.min.js"></script>
+<jsp:useBean id="dao" class="dao.loginmodule.idpw"/>
 <style>body{margin-top: 60px}</style>
+<%
+	request.setCharacterEncoding("euc-kr");
+	response.setCharacterEncoding("euc-kr");
+	String [] u_find = dao.getBoardList();
+%>
 
-<title>Insert title here</title>
+<title>Id/Pw Search</title>
 </head>
-<body>
+<body onresize="parent.resizeTo(500,400)" onload="parent.resizeTo(500,400)">
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container" >
             <div class="navbar-header">
@@ -49,17 +55,18 @@
             <div class="col-lg-12 panel panel-primary" id="id" >
             <h3>아이디 찾기</h3>
             <br>
+            <form action="id_proc.jsp" method="post" class="search-id">
             <div class="form-group">
      		 <label for="inputName" class="col-lg-2 control-label">이름</label>
     			  <div class="col-lg-10">
-      				  <input type="text" class="form-control" id="inputEmail" placeholder="이름 입력">
+      				  <input type="text" class="form-control" id="name" name="name" placeholder="이름 입력">
     			  </div>
     		</div>
     		<br><br>
              <div class="form-group">
      		 <label for="inputEmail" class="col-lg-2 control-label">이메일</label>
     			  <div class="col-lg-10">
-      				  <input type="text" class="form-control" id="inputEmail" placeholder="이메일 입력">
+      				  <input type="text" class="form-control" id="email" name="email" placeholder="이메일 입력">
     			  </div>
     		</div>
     		<br><br>
@@ -71,34 +78,35 @@
 			        <br><br>
 			      </div>
 			    </div>	
+			</form>
             </div><!-- 아이디 찾기 -->
             
             <div class="col-lg-12 panel panel-primary" id="pw" >
             <h3>비밀번호 찾기</h3>
             <br>
+             <form action="pw_proc.jsp" method="post" class="search-id">
             <div class="form-group">
      		 <label for="inputId" class="col-lg-2 control-label">아이디</label>
     			  <div class="col-lg-10">
-      				  <input type="text" class="form-control" id="inputEmail" placeholder="아이디 입력">
+      				  <input type="text" class="form-control" id="inputEmail" name="id" placeholder="아이디 입력">
     			  </div>
     		</div>
     		<br><br>
             <div class="form-group">
      		 <label for="inputEmail" class="col-lg-2 control-label">이메일</label>
     			  <div class="col-lg-10">
-      				  <input type="text" class="form-control" id="inputEmail" placeholder="이메일 입력">
+      				  <input type="text" class="form-control" id="inputEmail" name="email" placeholder="이메일 입력">
     			  </div>
     		</div>
     		<br><br>
     		 <div class="form-group">
      		 <label for="inputQuiz" class="col-lg-2 control-label">퀴즈선택</label>
      		 <div class="col-lg-10">
-    		 <select class="form-control" id="select">
-	          <option>나의 고향은?</option>
-	          <option>2</option>
-	          <option>3</option>
-	          <option>4</option>
-	          <option>5</option>
+    		 <select class="form-control" id="select" name="select">
+    		 <%for(int i=0; i<u_find.length ;i++){ %>
+    		 	
+	          <option><%=u_find[i]%></option>
+	          <%} %>
 	         </select>
 	        </div>
 	      	</div>
@@ -106,7 +114,7 @@
 	      	<div class="form-group">
      		 <label for="inputAn" class="col-lg-2 control-label">답변</label>
     			  <div class="col-lg-10">
-      				  <input type="text" class="form-control" id="inputAn" placeholder="답변 입력">
+      				  <input type="text" class="form-control" id="inputAn" placeholder="답변 입력" name="answer">
     			  </div>
     		</div>
     		<br><br>
@@ -118,6 +126,7 @@
 			        <br><br>
 			      </div>
 			    </div>	
+			    </form>
             </div><!-- 패스워드 찾기 -->     
               
 	</div>
