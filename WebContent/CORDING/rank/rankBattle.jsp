@@ -26,36 +26,7 @@
 <title>Ranking</title>
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container" >
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-             
-            </div>    
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
-                <ul class="nav navbar-nav"  >
-                <li>
-                <img src="https://cdn0.iconfinder.com/data/icons/chinese-new-year-4/64/treasure-chinese-new-year-heritage-diamond-128.png"
-                	width="100px" height="50px">
-                	
-                </li>
-                    <li>
-                        <a href="#">로그인</a>
-                    </li>
-                    <li>
-                        <a href="#">회원가입</a>
-                    </li>
-                    <li>
-                    	<a href="idpw.html">아이디/비밀번호 찾기</a>     
-                    </li>
-                </ul>
-            </div>
-        </div>
-</nav>
+<jsp:include page="/nav.html"/>
     
 <div class="container">   
         <div class="row col-lg-12">

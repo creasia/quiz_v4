@@ -8,6 +8,7 @@
 <script src="bootstrap332/js/jquery-3.2.1.min.js"></script>
 <script src="bootstrap332/js/bootstrap.min.js"></script>
 <style>body{margin-top: 40px}</style>
+
 <script>
 	$(
 			function(){
@@ -30,41 +31,7 @@
 <title>Main</title>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-    	<!-- 이미지 깨짐
-    	<a class="navbar-brand" href="#">
-    		<img alt="Brand" src="/images/quiz.jpg">
-    	</a>
-    	 -->
-    	<a class="navbar-brand" href="#"><font color="red">Guilty Pleasure</font></a>
-    </div>
-    <div>
-    <!-- 좌측정렬 네비 바
-      <ul class="nav navbar-nav">
-        <li><a href="#">홈</a></li>
-        <li><a href="#">메뉴1</a></li>
-        <li><a href="#">메뉴2</a></li> 
-        <li><a href="#">메뉴3</a></li> 
-      </ul>
-    -->
-    <!-- 우측 정렬 네비 바 -->
-      <ul class="nav navbar-nav navbar-right">
-      	<%if(u_id.length()==0){%>
-        	<li><a href="CORDING/login/login.html">로그인</a></li>
-        	<li><a href="CORDING/login/resistration.html">회원가입</a></li>
-        	<li><a href="CORDING/login/idpw.jsp">아이디/비밀번호 찾기</a></li>
-        <%} %>
-        <%if(u_id.length()>0){%>
-        	<li><a><%=u_id%>님 환영합니다.</a></li>
-        	<li><a href="#">마이페이지</a></li>
-        	<li><a href="CORDING/login/logout.html">로그아웃</a></li>
-        <%} %>
-      </ul>
-    </div>
-  </div>
-</nav>
+<jsp:include page="/top.jsp"/>
 
 <div class="container">   
         <div class="row">
