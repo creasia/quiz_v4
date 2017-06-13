@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import dto.Board;
+import dbcp.DBConnectionMgr;
 
 public class BoardUpload {
 	 private Connection con;
@@ -12,25 +13,26 @@ public class BoardUpload {
 	 private ResultSet rs;
 	 private dbcp.DBConnectionMgr pool;
 	
-	private BoardUpload(){}
-	
-	private static BoardUpload instance = new BoardUpload();
-	
-	public static BoardUpload getInstance(){
-		return instance;
+	private BoardUpload(){
+		try{
+	         pool = dbcp.DBConnectionMgr.getInstance();
+	         con = pool.getConnection();
+	      }
+	      catch(Exception err){
+	         System.out.println("DBCP 인스턴스 참조 실패: " + err);
+	      }
 	}
 	
-	//postProc.jsp 글쓰기 기능
+	
+	//BoardWrite_proc.jsp 글쓰기 기능
 	public void insertBoard(Board board){
-		String sql = "insert into board(b_num, b_title, b_content, b_regdate, b_count)"
-				+ "values('B'||LPAD((seq_b_num.NEXTVAL),4,'0'),?,?,sysdate,0)";
+		String sql = "insert into board(b_num, b_title, u_id, b_content, b_regdate, b_count)"
+				+ "values('B'||LPAD((seq_b_num.NEXTVAL),4,'0'),?,?,?,sysdate,0)";
 		try{
-			con = pool.getConnection();
 			pstmt = con.prepareStatement(sql);
-				
-			//작성자???? id? nickname?
 			pstmt.setString(1, board.getB_title());
-			pstmt.setString(2, board.getB_content());
+			pstmt.setString(2, board.getU_id());
+			pstmt.setString(3, board.getB_content());
 			pstmt.executeUpdate();
 		}
 		catch(Exception err){

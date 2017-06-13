@@ -44,13 +44,13 @@ public class BoardList {
 			while(rs.next()){
 				Board board = new Board();
 				board.setB_num(rs.getInt("b_num"));
-				board.setU_id(rs.getString("u_id"));
-				board.setU_nickname(rs.getString("u_nickname"));
 				board.setB_title(rs.getString("b_title"));
-				board.setB_content(rs.getString("b_content"));
-				board.setB_regdate(rs.getTimestamp("b_regdate"));
 				board.setB_count(rs.getInt("b_count"));
-				board.setB_reply(rs.getString("b_reply"));
+				board.setU_nickname(rs.getString("u_nickname"));
+				board.setB_regdate(rs.getTimestamp("b_regdate"));
+				//board.setB_content(rs.getString("b_content"));
+				//board.setU_id(rs.getString("u_id"));
+				//board.setB_reply(rs.getString("b_reply"));
 				
 				list.add(board);
 			}
