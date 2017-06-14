@@ -17,6 +17,7 @@ public class CommandFactory {
 		else if (cmd.equals("QUIZ_REGI")) {
 			return new QuziRegisterCommand();
 		}else if(cmd.equals("QUIZ_RESULT")){
+			return new QuizResultCommand();
 		}
 		else{
 		}

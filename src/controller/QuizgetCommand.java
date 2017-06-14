@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +19,7 @@ public class QuizgetCommand implements Command {
 		GetQuiz quiz = new GetQuiz();
 		Quiz q = quiz.makeQuiz();
 		req.setAttribute("quiz", q);
+		//System.out.println("ฤ๛ม๎ดย? +" +q.toString());
 		return "/CORDING/Quiz/SinglePlay.jsp";
 	}
 }
